@@ -2,5 +2,4 @@
     <string name="app_name">FourInARow</string>
     <string name="welcome_to_four_in_a_row_game">Welcome to Four In A Row game Here you will be playing against the computer! You have to get four of your peices to match in a row to win! To get started Please enter your name below!</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="userName">Username</string>
 </resources>

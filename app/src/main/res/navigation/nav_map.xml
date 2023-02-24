@@ -18,5 +18,11 @@
         android:id="@+id/gameFragment"
         android:name="edu.quinnipiac.fourinarow.GameFragment"
         android:label="fragment_game"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_game" >
+        <argument
+            android:name="userName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="username" />
+    </fragment>
 </navigation>
