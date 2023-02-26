@@ -74,7 +74,7 @@ class GameFragment : Fragment(),View.OnClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
+        // Essentially setting up the inflator for the buttons, and sets up the on click listner and final view
         val view = inflater.inflate(R.layout.fragment_game, container, false)
 
         for(i in 0 until btn_Array.size){
@@ -87,12 +87,14 @@ class GameFragment : Fragment(),View.OnClickListener {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        //Save instance module and setting up controllers and finding the nav view
         super.onViewCreated(view, savedInstanceState)
         NavCtrl = Navigation.findNavController(view)
         view.findViewById<TextView>(R.id.userID).text = uName
     }
 
     override fun onClick(p0: View?) {
+        //Sets up the reset button to clear the board
         val onResetDone: Button? = view?.findViewById(R.id.reset)
         view?.findViewById<Button>(R.id.reset)
         onResetDone?.setOnClickListener{
@@ -101,6 +103,7 @@ class GameFragment : Fragment(),View.OnClickListener {
                 listner.get(i).setBackgroundColor(Color.rgb(99, 5, 220))
             }
         }
+        //Sets up player move via button clicks
 
         for(i in 0 until listner.size){
             val onClickDone: Button = view?.findViewById(btn_Array[i])!!
@@ -109,10 +112,12 @@ class GameFragment : Fragment(),View.OnClickListener {
                 FourInARow.setMove(1, i)
             }
         }
+        //Setups up the computer move
 
         val comMove = FourInARow.computerMove
         FourInARow.setMove(2, comMove)
         listner.get(comMove).setBackgroundColor(Color.BLUE)
+        //Check for winner move every time a player or computer runs a move it checks for winner
         FourInARow.checkForWinner()
         if(FourInARow.checkForWinner() == 3){
             Toast.makeText(context,uName + " has Won!", Toast.LENGTH_SHORT).show()
