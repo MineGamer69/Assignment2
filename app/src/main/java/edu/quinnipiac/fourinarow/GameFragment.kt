@@ -93,6 +93,15 @@ class GameFragment : Fragment(),View.OnClickListener {
     }
 
     override fun onClick(p0: View?) {
+        val onResetDone: Button? = view?.findViewById(R.id.reset)
+        view?.findViewById<Button>(R.id.reset)
+        onResetDone?.setOnClickListener{
+            FourInARow.clearBoard()
+            for(i in 0 until listner.size){
+                listner.get(i).setBackgroundColor(Color.rgb(99, 5, 220))
+            }
+        }
+
         for(i in 0 until listner.size){
             val onClickDone: Button = view?.findViewById(btn_Array[i])!!
             if(onClickDone == p0){
@@ -100,6 +109,7 @@ class GameFragment : Fragment(),View.OnClickListener {
                 FourInARow.setMove(1, i)
             }
         }
+
         val comMove = FourInARow.computerMove
         FourInARow.setMove(2, comMove)
         listner.get(comMove).setBackgroundColor(Color.BLUE)
@@ -112,6 +122,7 @@ class GameFragment : Fragment(),View.OnClickListener {
         }
 
     }
+
 
 }
 
