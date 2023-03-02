@@ -24,8 +24,8 @@
 
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridLayout"
-        android:layout_width="399dp"
-        android:layout_height="400dp"
+        android:layout_width="393dp"
+        android:layout_height="422dp"
         android:layout_marginTop="136dp"
         android:layout_marginBottom="136dp"
         app:layout_constraintBottom_toBottomOf="parent"

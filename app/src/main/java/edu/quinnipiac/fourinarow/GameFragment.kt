@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.toColor
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -81,7 +82,9 @@ class GameFragment : Fragment(),View.OnClickListener {
             listner.add(view.findViewById<Button>(btn_Array[i]))
         }
         for(i in 0 until listner.size){
+            listner.get(i).background = ContextCompat.getDrawable(requireContext(), R.drawable.cleanboard)
             listner.get(i).setOnClickListener(this)
+
         }
         return view
     }
@@ -100,7 +103,8 @@ class GameFragment : Fragment(),View.OnClickListener {
         onResetDone?.setOnClickListener{
             FourInARow.clearBoard()
             for(i in 0 until listner.size){
-                listner.get(i).setBackgroundColor(Color.rgb(99, 5, 220))
+                listner.get(i).background = ContextCompat.getDrawable(requireContext(), R.drawable.cleanboard)
+                //listner.get(i).setBackgroundColor(Color.rgb(99, 5, 220))
             }
         }
         //Sets up player move via button clicks
@@ -108,7 +112,8 @@ class GameFragment : Fragment(),View.OnClickListener {
         for(i in 0 until listner.size){
             val onClickDone: Button = view?.findViewById(btn_Array[i])!!
             if(onClickDone == p0){
-                onClickDone.setBackgroundColor(Color.RED)
+                listner.get(i).background = ContextCompat.getDrawable(requireContext(), R.drawable.human)
+                //onClickDone.setBackgroundColor(Color.RED)
                 FourInARow.setMove(1, i)
             }
         }
@@ -116,7 +121,8 @@ class GameFragment : Fragment(),View.OnClickListener {
 
         val comMove = FourInARow.computerMove
         FourInARow.setMove(2, comMove)
-        listner.get(comMove).setBackgroundColor(Color.BLUE)
+        listner.get(comMove).background = ContextCompat.getDrawable(requireContext(), R.drawable.computer)
+        //listner.get(comMove).setBackgroundColor(Color.BLUE)
         //Check for winner move every time a player or computer runs a move it checks for winner
         FourInARow.checkForWinner()
         if(FourInARow.checkForWinner() == 3){
